@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelCraft Studio — Code Screenshots, Image Optimizer, CSS Glass &amp; WCAG Lab</title>
+  <style>
+    :root { --bg:#070a12; --card:#101726; --in:#0a0f1c; --bd:#22304a; --tx:#f8fafc; --mut:#94a3b8; --ac:#f43f5e; --ac2:#8b5cf6; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--tx); min-height:100vh; padding:24px 18px; background-image:radial-gradient(circle at 12% 0%,rgba(244,63,94,0.12),transparent 38%),radial-gradient(circle at 88% 8%,rgba(139,92,246,0.14),transparent 38%); }
+    .wrap { max-width:1160px; margin:0 auto; }
+    .hdr { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; padding:22px 26px; border-radius:16px; background:linear-gradient(135deg,rgba(244,63,94,0.14),rgba(139,92,246,0.16)); border:1px solid rgba(139,92,246,0.35); margin-bottom:20px; }
+    .hdr h1 { font-size:1.6rem; font-weight:800; }
+    .hdr p { color:var(--mut); font-size:0.9rem; margin-top:4px; }
+    .tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+    .tab { padding:10px 16px; border-radius:10px; border:1px solid var(--bd); background:var(--card); color:var(--mut); font-weight:700; cursor:pointer; font-size:0.86rem; }
+    .tab.active { background:linear-gradient(135deg,#f43f5e,#8b5cf6); color:#fff; border-color:transparent; }
+    .panel { display:none; }
+    .panel.active { display:block; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:18px; }
+    .card { background:var(--card); border:1px solid var(--bd); border-radius:14px; padding:20px; margin-bottom:18px; }
+    .card h2 { font-size:1rem; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; }
+    label { font-size:0.78rem; color:var(--mut); font-weight:600; display:block; margin-bottom:5px; }
+    input, select, textarea { width:100%; background:var(--in); border:1px solid var(--bd); color:var(--tx); border-radius:8px; padding:9px 11px; font-family:inherit; font-size:0.86rem; margin-bottom:10px; }
+    textarea { font-family:Consolas,monospace; }
+    .row { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; }
+    .btn { background:linear-gradient(135deg,#f43f5e,#8b5cf6); color:#fff; border:none; padding:9px 16px; border-radius:9px; font-weight:700; cursor:pointer; font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px; }
+    .btn-ghost { background:var(--in); border:1px solid var(--bd); color:var(--tx); }
+    pre { background:var(--in); border:1px solid var(--bd); padding:12px; border-radius:8px; font-family:Consolas,monospace; font-size:0.8rem; color:#f9a8d4; overflow-x:auto; white-space:pre-wrap; }
+    .preview-stage { border-radius:14px; padding:32px; display:flex; align-items:center; justify-content:center; min-height:260px; overflow:auto; }
+    canvas { max-width:100%; border-radius:12px; box-shadow:0 20px 50px rgba(0,0,0,0.5); }
+    .badge { padding:3px 10px; border-radius:999px; font-size:0.74rem; font-weight:800; }
+    .pass { background:rgba(16,185,129,0.2); color:#34d399; }
+    .fail { background:rgba(239,68,68,0.2); color:#f87171; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hdr">
+      <div>
+        <h1>🎨 PixelCraft Studio — Designers, Frontend Devs &amp; Creators</h1>
+        <p>100% Client-Side Creative Suite: HD Code Screenshot Beautifier, Image Compressor (WebP/PNG/JPEG), CSS Glassmorphism &amp; WCAG Contrast Lab.</p>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <a href="https://github.com/WallisonWS/pixelcraft-studio" target="_blank" class="btn">⭐ Star on GitHub</a>
+        <a href="https://github.com/WallisonWS" target="_blank" class="btn btn-ghost">@WallisonWS</a>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-t="p-code">📸 Code Screenshot Studio</button>
+      <button class="tab" data-t="p-img">🖼️ Image Optimizer &amp; WebP</button>
+      <button class="tab" data-t="p-glass">✨ CSS Glassmorphism Lab</button>
+      <button class="tab" data-t="p-wcag">🎨 WCAG Contrast &amp; Palette</button>
+    </div>
+
+    <!-- 1. CODE SCREENSHOT STUDIO -->
+    <section class="panel active" id="p-code">
+      <div class="grid">
+        <div class="card">
+          <h2>📝 Code Snippet &amp; Style</h2>
+          <div class="row">
+            <div><label>Window Title</label><input id="csTitle" value="deploy-zero-trust.ts" /></div>
+            <div><label>Backdrop Theme</label>
+              <select id="csTheme">
+                <option value="cyber">Cyber Rose → Violet</option>
+                <option value="ocean">Ocean Cyan → Indigo</option>
+                <option value="emerald">Emerald → Teal</option>
+                <option value="sunset">Sunset Amber → Pink</option>
+              </select>
+            </div>
+            <div><label>Padding (px)</label><input type="number" id="csPad" value="44" min="16" max="80" /></div>
+          </div>
+          <label>Code</label>
+          <textarea id="csCode" rows="9">export async function verifyZeroTrust(req: Request) {
+  const token = req.headers.get("Authorization");
+  if (!token) return new Response("Unauthorized", { status: 401 });
+
+  // Validate JWT + Edge Policy in < 2ms
+  return Response.json({ status: "verified", tier: "A+" });
+}</textarea>
+          <button class="btn" id="csDownloadBtn">⬇️ Download HD PNG</button>
+        </div>
+
+        <div class="card">
+          <h2>🖼️ Live Canvas Preview (HD Export)</h2>
+          <div class="preview-stage" style="padding:12px; background:#05070e;">
+            <canvas id="csCanvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. CLIENT-SIDE IMAGE OPTIMIZER -->
+    <section class="panel" id="p-img">
+      <div class="card">
+        <h2>🖼️ Zero-Upload Image Compressor &amp; Converter (WebP / JPEG / PNG)</h2>
+        <div class="row">
+          <div><label>Select Image File</label><input type="file" id="imgFile" accept="image/*" /></div>
+          <div><label>Output Format</label>
+            <select id="imgFormat">
+              <option value="image/webp">WebP (Best Compression)</option>
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/png">PNG</option>
+            </select>
+          </div>
+          <div><label>Quality (<span id="imgQualVal">80</span>%)</label><input type="range" id="imgQual" min="10" max="100" value="80" /></div>
+          <div><label>Max Width (px)</label><input type="number" id="imgMaxW" value="1600" /></div>
+        </div>
+        <div id="imgStats" style="margin:10px 0; font-size:0.88rem; color:#34d399;">Select any PNG/JPG image to compress &amp; convert locally in your browser.</div>
+        <button class="btn" id="imgDownloadBtn" style="display:none; margin-bottom:14px;">⬇️ Download Optimized Image</button>
+        <div style="text-align:center;"><img id="imgPreview" style="max-width:100%; max-height:360px; border-radius:10px; display:none;" /></div>
+      </div>
+    </section>
+
+    <!-- 3. CSS GLASSMORPHISM LAB -->
+    <section class="panel" id="p-glass">
+      <div class="grid">
+        <div class="card">
+          <h2>🎛️ Glass Parameters</h2>
+          <label>Backdrop Blur: <span id="glBlurV">14</span>px</label>
+          <input type="range" id="glBlur" min="0" max="32" value="14" />
+          <label>Opacity: <span id="glOpV">0.18</span></label>
+          <input type="range" id="glOp" min="0.05" max="0.6" step="0.01" value="0.18" />
+          <label>Border Radius: <span id="glRadV">18</span>px</label>
+          <input type="range" id="glRad" min="4" max="36" value="18" />
+          <label>Generated CSS &amp; Tailwind</label>
+          <pre id="glCode"></pre>
+        </div>
+        <div class="card">
+          <h2>👁️ Live Preview</h2>
+          <div class="preview-stage" style="background:linear-gradient(135deg,#ec4899,#6366f1,#0ea5e9);">
+            <div id="glBox" style="width:290px; padding:26px; color:#fff;">
+              <h3 style="margin-bottom:8px;">Glass Card UI</h3>
+              <p style="font-size:0.86rem; opacity:0.9;">Modern frosted glassmorphism ready for React, Next.js &amp; Tailwind CSS.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. WCAG CONTRAST CHECKER -->
+    <section class="panel" id="p-wcag">
+      <div class="grid">
+        <div class="card">
+          <h2>🎨 Foreground &amp; Background</h2>
+          <div class="row">
+            <div><label>Text Color</label><input type="color" id="wcFg" value="#f8fafc" style="height:44px;" /></div>
+            <div><label>Background Color</label><input type="color" id="wcBg" value="#0f172a" style="height:44px;" /></div>
+          </div>
+          <div id="wcMetrics" style="margin-top:12px;"></div>
+        </div>
+        <div class="card">
+          <h2>👁️ Accessibility Preview</h2>
+          <div id="wcPreview" style="padding:28px; border-radius:12px; border:1px solid var(--bd);">
+            <h3 style="font-size:1.4rem; margin-bottom:8px;">Accessible UI Typography</h3>
+            <p style="font-size:0.95rem;">Verify WCAG 2.1 AA (4.5:1) and AAA (7.0:1) contrast compliance before shipping production designs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Tabs
+    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById(t.dataset.t).classList.add('active');
+    }));
+
+    // 1. Code Screenshot Canvas Renderer
+    const THEMES = {
+      cyber: ['#f43f5e', '#8b5cf6'],
+      ocean: ['#0ea5e9', '#4f46e5'],
+      emerald: ['#10b981', '#0891b2'],
+      sunset: ['#f59e0b', '#ec4899']
+    };
+    function renderCodeShot() {
+      const canvas = document.getElementById('csCanvas');
+      const ctx = canvas.getContext('2d');
+      const lines = document.getElementById('csCode').value.split('\n');
+      const title = document.getElementById('csTitle').value;
+      const pad = parseInt(document.getElementById('csPad').value, 10) || 44;
+      const [c1, c2] = THEMES[document.getElementById('csTheme').value];
+
+      const fontSize = 15, lineH = 24;
+      ctx.font = `600 ${fontSize}px Consolas, monospace`;
+      const maxLineW = Math.max(440, ...lines.map(l => ctx.measureText(l).width + 48));
+      const winW = maxLineW + 24;
+      const winH = 44 + lines.length * lineH + 28;
+      canvas.width = winW + pad * 2;
+      canvas.height = winH + pad * 2;
+
+      const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      grad.addColorStop(0, c1); grad.addColorStop(1, c2);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // macOS Window
+      ctx.fillStyle = 'rgba(10, 15, 28, 0.94)';
+      ctx.beginPath(); ctx.roundRect(pad, pad, winW, winH, 14); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.14)'; ctx.lineWidth = 1.5; ctx.stroke();
+
+      // Dots
+      [['#ef4444', 22], ['#f59e0b', 42], ['#10b981', 62]].forEach(([col, x]) => {
+        ctx.fillStyle = col; ctx.beginPath(); ctx.arc(pad + x, pad + 22, 6, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.fillStyle = '#94a3b8'; ctx.font = '600 13px system-ui, sans-serif';
+      ctx.fillText(title, pad + winW / 2 - ctx.measureText(title).width / 2, pad + 26);
+
+      // Code lines
+      ctx.font = `500 ${fontSize}px Consolas, monospace`;
+      lines.forEach((line, i) => {
+        ctx.fillStyle = line.trim().startsWith('//') ? '#64748b' : '#e2e8f0';
+        ctx.fillText(line, pad + 24, pad + 64 + i * lineH);
+      });
+    }
+    ['csTitle', 'csTheme', 'csPad', 'csCode'].forEach(id => document.getElementById(id).addEventListener('input', renderCodeShot));
+    document.getElementById('csDownloadBtn').addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.download = (document.getElementById('csTitle').value || 'code-shot') + '.png';
+      a.href = document.getElementById('csCanvas').toDataURL('image/png');
+      a.click();
+    });
+    renderCodeShot();
+
+    // 2. Image Optimizer
+    let loadedImg = null, origSize = 0, outBlobUrl = null;
+    function processImage() {
+      if (!loadedImg) return;
+      const fmt = document.getElementById('imgFormat').value;
+      const qual = parseInt(document.getElementById('imgQual').value, 10) / 100;
+      const maxW = parseInt(document.getElementById('imgMaxW').value, 10) || 1600;
+      document.getElementById('imgQualVal').textContent = Math.round(qual * 100);
+
+      const scale = loadedImg.width > maxW ? maxW / loadedImg.width : 1;
+      const c = document.createElement('canvas');
+      c.width = Math.round(loadedImg.width * scale);
+      c.height = Math.round(loadedImg.height * scale);
+      c.getContext('2d').drawImage(loadedImg, 0, 0, c.width, c.height);
+
+      c.toBlob(blob => {
+        if (!blob) return;
+        if (outBlobUrl) URL.revokeObjectURL(outBlobUrl);
+        outBlobUrl = URL.createObjectURL(blob);
+        const saved = origSize ? Math.round((1 - blob.size / origSize) * 100) : 0;
+        document.getElementById('imgStats').textContent = `Original: ${(origSize/1024).toFixed(1)} KB → Optimized (${c.width}x${c.height}): ${(blob.size/1024).toFixed(1)} KB (${saved >= 0 ? '-' + saved : '+' + Math.abs(saved)}%)`;
+        const prev = document.getElementById('imgPreview');
+        prev.src = outBlobUrl; prev.style.display = 'inline-block';
+        const dl = document.getElementById('imgDownloadBtn');
+        dl.style.display = 'inline-flex';
+        dl.onclick = () => { const a = document.createElement('a'); a.href = outBlobUrl; a.download = 'optimized.' + fmt.split('/')[1]; a.click(); };
+      }, fmt, qual);
+    }
+    document.getElementById('imgFile').addEventListener('change', e => {
+      const f = e.target.files[0]; if (!f) return;
+      origSize = f.size;
+      const img = new Image();
+      img.onload = () => { loadedImg = img; processImage(); };
+      img.src = URL.createObjectURL(f);
+    });
+    ['imgFormat', 'imgQual', 'imgMaxW'].forEach(id => document.getElementById(id).addEventListener('input', processImage));
+
+    // 3. Glassmorphism
+    function updateGlass() {
+      const b = document.getElementById('glBlur').value, o = document.getElementById('glOp').value, r = document.getElementById('glRad').value;
+      document.getElementById('glBlurV').textContent = b; document.getElementById('glOpV').textContent = o; document.getElementById('glRadV').textContent = r;
+      const box = document.getElementById('glBox');
+      box.style.background = `rgba(255, 255, 255, ${o})`;
+      box.style.backdropFilter = `blur(${b}px)`;
+      box.style.borderRadius = `${r}px`;
+      box.style.border = '1px solid rgba(255,255,255,0.28)';
+      document.getElementById('glCode').textContent = `/* CSS */\nbackground: rgba(255, 255, 255, ${o});\nbackdrop-filter: blur(${b}px);\n-webkit-backdrop-filter: blur(${b}px);\nborder-radius: ${r}px;\nborder: 1px solid rgba(255, 255, 255, 0.28);\n\n/* Tailwind */\nclass="bg-white/${Math.round(o*100)} backdrop-blur-md rounded-[${r}px] border border-white/30"`;
+    }
+    ['glBlur', 'glOp', 'glRad'].forEach(id => document.getElementById(id).addEventListener('input', updateGlass));
+    updateGlass();
+
+    // 4. WCAG Contrast
+    function lum(hex) {
+      const rgb = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255).map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+      return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+    }
+    function updateWcag() {
+      const fg = document.getElementById('wcFg').value, bg = document.getElementById('wcBg').value;
+      const l1 = lum(fg), l2 = lum(bg);
+      const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+      const prev = document.getElementById('wcPreview');
+      prev.style.color = fg; prev.style.backgroundColor = bg;
+      const b = (ok, txt) => `<span class="badge ${ok ? 'pass' : 'fail'}">${txt}: ${ok ? 'PASS' : 'FAIL'}</span>`;
+      document.getElementById('wcMetrics').innerHTML = `<div style="font-size:1.8rem;font-weight:900;margin-bottom:8px;">${ratio.toFixed(2)} : 1</div><div style="display:flex;gap:8px;flex-wrap:wrap;">${b(ratio >= 4.5, 'AA Normal')}${b(ratio >= 7, 'AAA Normal')}${b(ratio >= 3, 'AA Large')}</div>`;
+    }
+    ['wcFg', 'wcBg'].forEach(id => document.getElementById(id).addEventListener('input', updateWcag));
+    updateWcag();
+  </script>
+</body>
+</html>
